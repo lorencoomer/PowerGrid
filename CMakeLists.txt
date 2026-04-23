@@ -3,4 +3,4 @@ project(PowerGrid C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(PowerGrid main.c)
+add_executable(PowerGrid src/main.c)

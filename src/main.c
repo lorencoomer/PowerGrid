@@ -3,11 +3,9 @@
 #include "commands.h"
 
 int main() {
-    char* input;
-
     while (true) {
         makegrid(10, 10);
-        readcommands(input);
+        readcommands();
     }
 
     return 0;

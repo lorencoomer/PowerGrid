@@ -2,11 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-void readcommands(char* input) {
-    printf("> ");
-    scanf("%s", input);
+char input[100];
 
-    if (strcmp(input, "exit") == 0) {
+void readcommands() {
+    printf("> ");
+    
+    int read = scanf("%99s", input);
+
+    if (read != 1 || strcmp(input, "exit") == 0) {
         printf("\e[1;1H\e[2J");
         exit(0);
     }

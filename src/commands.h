@@ -1,3 +1,3 @@
 #pragma once
 
-void readcommands(char* input);
+void readcommands();

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int energy = 0;
 int maxenergy = 0;
@@ -22,7 +23,11 @@ const char* acts[10] = {
 };
 
 void render(int rows, int columns) {
-    printf("\e[1;1H\e[2J");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 
     printf(" ");
     for (int i = 0; i < columns; i++) {

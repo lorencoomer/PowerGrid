@@ -10,7 +10,12 @@ void readcommands() {
     int read = scanf("%99s", input);
 
     if (read != 1 || strcmp(input, "exit") == 0) {
-        printf("\e[1;1H\e[2J");
+        #ifdef _WIN32
+            system("cls");
+        #else
+            system("clear");
+        #endif
+        
         exit(0);
     }
     else if (strcmp(input, "pass") == 0) {

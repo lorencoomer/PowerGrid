@@ -4,7 +4,7 @@
 
 int main() {
     while (true) {
-        makegrid(10, 10);
+        render(10, 10);
         readcommands();
     }
 

@@ -1,3 +1,3 @@
 #pragma once
 
-void makegrid(int rows, int columns);
+void render(int rows, int columns);

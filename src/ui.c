@@ -1,25 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "commands.h"
 
-int energy = 0;
-int maxenergy = 0;
-
-int sustain = 0;
-int maxsustain = 0;
-
-int money = 0;
-
-const char* acts[10] = {
+const char* acts[11] = {
     " ",
-    "               Acts/Policies:",
-    "1: National Environmental Policy Act (NEPA)",
-    "2: Endangered Species Act (ESA)",
-    "3: Clean Air Act (CAA)",
-    "4: Clean Water Act (CWA)",
+    "               Acts/Policies:                                 Sustainable Power Plants:",
+    "1: National Environmental Policy Act (NEPA)          W: Windmill Farm ($2,000 for 10 energy)",
+    "2: Endangered Species Act (ESA)                      S: Solar Panel Farm ($3,000 for 15 energy)",
+    "3: Clean Air Act (CAA)                               G: Geothermal Plant ($6,000 for 40 energy)",
+    "4: Clean Water Act (CWA)                             H: Hydroelectric Plant ($10,000 for 100 energy)",
     "5: Safe Drinking Water Act (SDWA)",
-    "6: Montreal Protocol",
-    "7: Kyoto Protocol",
-    "8: Paris Climate Accords"
+    "6: Montreal Protocol                                   Unsustainable Power Plants:",
+    "7: Kyoto Protocol                                    O: Oil Power Plant (20 energy)",
+    "8: Paris Climate Accords                             C: Coal Power Plant (60 energy)",
+    "                                                     N: Nuclear Power Plant (120 energy)"
+};
+
+char grid[10][10] = {
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
 };
 
 void render(int rows, int columns) {
@@ -35,7 +42,7 @@ void render(int rows, int columns) {
     for (int i = 0; i < columns; i++) {
         printf("+---");
     }
-    printf("+               Energy: %d/%d\n", energy, maxenergy);
+    printf("+          Energy: %d/%d\n", energy, maxenergy);
 
     for (int i = 0; i < rows; i++) {
         if (i != 0) printf("  ");
@@ -45,21 +52,21 @@ void render(int rows, int columns) {
         }
 
         if (i >= 2) {
-            if (2*i - 3 < 10) printf("+                              %s\n", acts[2*i - 3]);
+            if (2*i - 3 < 11) printf("+                        %s\n", acts[2*i - 3]);
             else printf("+\n");
         }
         else if (i == 1) {
-            printf("+               Money: $%d\n", money);
+            printf("+          Money: $%d\n", money);
         }
 
         printf("%d ", i);
         for (int j = 0; j < columns; j++) {
-            printf("|   ");
+            printf("| %c ", grid[i][j]);
         }
 
-        if (i == 0) printf("|               Sustainability: %d/%d\n", sustain, maxsustain);
+        if (i == 0) printf("|          Sustainability: %d/%d\n", sustain, maxsustain);
         else {
-            if (2*i - 2 < 10) printf("|                              %s\n", acts[2*i - 2]);
+            if (2*i - 2 < 11) printf("|                        %s\n", acts[2*i - 2]);
             else printf("|\n");
         }
     }

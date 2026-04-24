@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+int energy = 0;
+int maxenergy = 0;
+
+int sustain = 0;
+int maxsustain = 0;
+
+int money = 0;
+
 char input[100];
 char *text;
 

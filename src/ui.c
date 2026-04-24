@@ -23,11 +23,7 @@ const char* acts[10] = {
 };
 
 void render(int rows, int columns) {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
+    printf("\033[0;0H\033[J");
 
     printf(" ");
     for (int i = 0; i < columns; i++) {

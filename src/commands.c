@@ -10,11 +10,7 @@ void readcommands() {
     int read = scanf("%99s", input);
 
     if (read != 1 || strcmp(input, "exit") == 0) {
-        #ifdef _WIN32
-            system("cls");
-        #else
-            system("clear");
-        #endif
+        printf("\033[0;0H\033[J");
         
         exit(0);
     }

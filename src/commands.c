@@ -3,9 +3,26 @@
 #include <string.h>
 
 char input[100];
+char *text;
+
+void say(const char* msg) {
+    void *data = malloc(strlen(text) + strlen(input) + 20);
+    snprintf(data, strlen(text) + strlen(input) + 20, "%s%s\n%s\n> ", text, input, msg);
+
+    free(text);
+    text = malloc(strlen(text) + strlen(input) + 20);
+
+    strcpy(text, data);
+    free(data);
+}
 
 void readcommands() {
-    printf("> ");
+    if(!text) {
+        text = malloc(3);
+        strcpy(text, "> ");
+    }
+
+    printf("%s", text);
     
     int read = scanf("%99s", input);
 
@@ -14,10 +31,6 @@ void readcommands() {
         
         exit(0);
     }
-    else if (strcmp(input, "pass") == 0) {
-        printf("\033[A\033[2K\r");
-    }
-    else {
-        printf("invalid command\n");
-    }
+    else if (strcmp(input, "pass") == 0) {}
+    else say("invalid command");
 }

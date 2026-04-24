@@ -13,4 +13,10 @@ void readcommands() {
         printf("\e[1;1H\e[2J");
         exit(0);
     }
+    else if (strcmp(input, "pass") == 0) {
+        printf("\033[A\033[2K\r");
+    }
+    else {
+        printf("invalid command\n");
+    }
 }

@@ -6,6 +6,8 @@ int maxenergy = 0;
 int sustain = 0;
 int maxsustain = 0;
 
+int money = 0;
+
 const char* acts[10] = {
     " ",
     "               Acts/Policies:",
@@ -41,9 +43,12 @@ void render(int rows, int columns) {
             printf("+---");
         }
 
-        if (i != 0) {
-            if (2*i - 2 < 10) printf("+                              %s\n", acts[2*i - 2]);
+        if (i >= 2) {
+            if (2*i - 3 < 10) printf("+                              %s\n", acts[2*i - 3]);
             else printf("+\n");
+        }
+        else if (i == 1) {
+            printf("+               Money: $%d\n", money);
         }
 
         printf("%d ", i);
@@ -53,7 +58,7 @@ void render(int rows, int columns) {
 
         if (i == 0) printf("|               Sustainability: %d/%d\n", sustain, maxsustain);
         else {
-            if (2*i - 1 < 10) printf("|                              %s\n", acts[2*i - 1]);
+            if (2*i - 2 < 10) printf("|                              %s\n", acts[2*i - 2]);
             else printf("|\n");
         }
     }

@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-int energy = 0;
-int maxenergy = 0;
+int energy = 100;
+int minenergy = 80;
 
 int sustain = 0;
-int maxsustain = 0;
+int minsustain = 0;
 
 int money = 0;
 
@@ -17,8 +17,7 @@ void say(const char* msg) {
     void *data = malloc(strlen(text) + strlen(input) + 20);
     snprintf(data, strlen(text) + strlen(input) + 20, "%s%s\n%s\n> ", text, input, msg);
 
-    free(text);
-    text = malloc(strlen(text) + strlen(input) + 20);
+    text = realloc(text, strlen(text) + strlen(input) + 20);
 
     strcpy(text, data);
     free(data);
@@ -29,7 +28,7 @@ void readcommands() {
         text = malloc(3);
         strcpy(text, "> ");
     }
-
+    
     printf("%s", text);
     
     int read = scanf("%99s", input);

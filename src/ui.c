@@ -19,12 +19,12 @@ const char* acts[11] = {
 char grid[10][10] = {
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', ' ', 'O', ' ', ' ', ' ', ' ', ' ', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-    {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+    {' ', ' ', 'C', ' ', ' ', ' ', ' ', ' ', 'O', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
 };
@@ -42,7 +42,9 @@ void render(int rows, int columns) {
     for (int i = 0; i < columns; i++) {
         printf("+---");
     }
-    printf("+          Energy: %d/%d\n", energy, maxenergy);
+
+    if (energy >= minenergy) printf("+          Energy: %d/%d\n", energy, minenergy);
+    else printf("+\033[31m          Energy: %d/%d\033[0m\n", energy, minenergy);
 
     for (int i = 0; i < rows; i++) {
         if (i != 0) printf("  ");
@@ -64,7 +66,10 @@ void render(int rows, int columns) {
             printf("| %c ", grid[i][j]);
         }
 
-        if (i == 0) printf("|          Sustainability: %d/%d\n", sustain, maxsustain);
+        if (i == 0) {
+           if (sustain >= minsustain) printf("|          Sustainability: %d/%d\n", sustain, minsustain);
+           else printf("|\033[31m          Sustainability: %d/%d\033[0m\n", sustain, minsustain);
+        }
         else {
             if (2*i - 2 < 11) printf("|                        %s\n", acts[2*i - 2]);
             else printf("|\n");

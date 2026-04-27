@@ -1,10 +1,10 @@
 #pragma once
 
 int energy;
-int maxenergy;
+int minenergy;
 
 int sustain;
-int maxsustain;
+int minsustain;
 
 int money;
 

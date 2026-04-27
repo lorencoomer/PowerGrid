@@ -10,11 +10,14 @@ int minsustain = 0;
 
 int money = 0;
 
-char input[100];
+char *input;
+size_t input_size = 0;
+
 char *text;
 
 void say(const char* msg) {
     void *data = malloc(strlen(text) + strlen(input) + 20);
+    input[strcspn(input, "\n")] = 0;
     snprintf(data, strlen(text) + strlen(input) + 20, "%s%s\n%s\n> ", text, input, msg);
 
     text = realloc(text, strlen(text) + strlen(input) + 20);
@@ -30,14 +33,13 @@ void readcommands() {
     }
     
     printf("%s", text);
-    
-    int read = scanf("%99s", input);
+    int read = getline(&input, &input_size, stdin);
 
-    if (read != 1 || strcmp(input, "exit") == 0) {
+    if (strcmp(input, "exit\n") == 0) {
         printf("\033[0;0H\033[J");
         
         exit(0);
     }
-    else if (strcmp(input, "pass") == 0) {}
+    else if (strcmp(input, "pass\n") == 0) {}
     else say("invalid command");
 }

@@ -1,11 +1,11 @@
 #pragma once
 
-int energy;
-int minenergy;
+extern int energy;
+extern int minenergy;
 
-int sustain;
-int minsustain;
+extern int sustain;
+extern int minsustain;
 
-int money;
+extern int money;
 
 void readcommands();

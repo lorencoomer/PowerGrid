@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "commands.h"
 
 const char* acts[11] = {
@@ -28,6 +29,10 @@ char grid[10][10] = {
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
 };
+
+int filled[2][100];
+
+int filled_size = 3;
 
 void render(int rows, int columns) {
     printf("\033[0;0H\033[J");

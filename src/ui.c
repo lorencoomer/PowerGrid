@@ -4,7 +4,7 @@
 #include "ui.h"
 #include "commands.h"
 
-const char* acts[11] = {
+const char* acts[12] = {
     " ",
     "               Acts/Policies:                                 Sustainable Power Plants:",
     "1: National Environmental Policy Act (NEPA)          W: Windmill Farm ($4,000 for 10 energy)",
@@ -15,7 +15,8 @@ const char* acts[11] = {
     "6: Montreal Protocol                                   Unsustainable Power Plants:",
     "7: Kyoto Protocol                                    O: Oil Power Plant (20 energy)",
     "8: Paris Climate Accords                             C: Coal Power Plant (60 energy)",
-    "                                                     N: Nuclear Power Plant (120 energy)"
+    "9: Marine Mammal Protection Act                      N: Nuclear Power Plant (120 energy)",
+    "@: Yellow Stone National Park Protection Act"
 };
 
 char grid[10][10] = {
@@ -66,7 +67,7 @@ void render(int rows, int columns) {
         }
 
         if (i >= 2) {
-            if (2*i - 3 < 11) printf("+                        %s\n", acts[2*i - 3]);
+            if (2*i - 3 < 12) printf("+                        %s\n", acts[2*i - 3]);
             else printf("+\n");
         }
         else if (i == 1) {
@@ -83,7 +84,7 @@ void render(int rows, int columns) {
            else printf("|\033[31m          Sustainability: %d/%d\033[0m\n", sustain, minsustain);
         }
         else {
-            if (2*i - 2 < 11) printf("|                        %s\n", acts[2*i - 2]);
+            if (2*i - 2 < 12) printf("|                        %s\n", acts[2*i - 2]);
             else printf("|\n");
         }
     }

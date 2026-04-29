@@ -23,7 +23,7 @@ char *full_input = NULL;
 
 char *text;
 
-const char* messages[10] = {
+const char* messages[12] = {
     "%c%d is polluting the river",
     "%c%d is cutting down trees",
     "%c%d is burning fossil fuels",
@@ -33,10 +33,12 @@ const char* messages[10] = {
     "%c%d is destroying habitats of the black bear",
     "%c%d is producing large amounts of ozone-depleting chemicals",
     "%c%d has not reported their carbon emissions in the past year",
-    "%c%d has not reduced their carbon emissions from 2013 to 2020"
+    "%c%d has not reduced their carbon emissions from 2013 to 2020",
+    "%c%d is destroying habitats of the bottlenose dolphin",
+    "%c%d is destroying yellowstone national park",
 };
 
-int act_for_messages[10] = { 4, 0, 3, 1, 5, 2, 0, 6, 8, 7 };
+int act_for_messages[12] = { 4, 0, 3, 1, 5, 2, 0, 6, 8, 7, 9, 16 };
 
 int message;
 
@@ -57,7 +59,7 @@ void say(const char* msg) {
 void pass() {
     int r = rand() % filled_size;
 
-    message = rand() % 10;
+    message = rand() % 12;
 
     curr[0] = filled[r].col + 'a';
     curr[1] = filled[r].row + '0';
@@ -184,7 +186,7 @@ void readcommands() {
         if (token[0] == curr[0] && token[1] == curr[1]) {
             token = strtok(NULL, " \n");
 
-            if (token == NULL || token[0] < '1' || token[0] > '8') {
+            if ((token == NULL || token[0] < '1' || token[0] > '8') && token[0] != '@') {
                 say("invalid command");
                 return;
             }

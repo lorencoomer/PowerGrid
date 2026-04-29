@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "ui.h"
 #include "commands.h"
 
 const char* acts[11] = {
     " ",
     "               Acts/Policies:                                 Sustainable Power Plants:",
-    "1: National Environmental Policy Act (NEPA)          W: Windmill Farm ($2,000 for 10 energy)",
-    "2: Endangered Species Act (ESA)                      S: Solar Panel Farm ($3,000 for 15 energy)",
-    "3: Clean Air Act (CAA)                               G: Geothermal Plant ($6,000 for 40 energy)",
-    "4: Clean Water Act (CWA)                             H: Hydroelectric Plant ($10,000 for 100 energy)",
+    "1: National Environmental Policy Act (NEPA)          W: Windmill Farm ($4,000 for 10 energy)",
+    "2: Endangered Species Act (ESA)                      S: Solar Panel Farm ($5,000 for 15 energy)",
+    "3: Clean Air Act (CAA)                               G: Geothermal Plant ($15,000 for 40 energy)",
+    "4: Clean Water Act (CWA)                             H: Hydroelectric Plant ($25,000 for 100 energy)",
     "5: Safe Drinking Water Act (SDWA)",
     "6: Montreal Protocol                                   Unsustainable Power Plants:",
     "7: Kyoto Protocol                                    O: Oil Power Plant (20 energy)",
@@ -30,12 +31,18 @@ char grid[10][10] = {
     {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}
 };
 
-int filled[2][100];
-
+PlantPos filled[100] = {{3, 2}, {2, 7}, {8, 7}};
 int filled_size = 3;
 
+PlantPos filled_sustainable[100];
+int filled_sustainable_size = 0;
+
 void render(int rows, int columns) {
-    printf("\033[0;0H\033[J");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 
     printf(" ");
     for (int i = 0; i < columns; i++) {

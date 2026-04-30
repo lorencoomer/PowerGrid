@@ -97,10 +97,18 @@ static void end_of_turn() {
     turn++;
     minenergy += 3 + turn / 10;
 
+    if (turn % 3 == 0)
+        minsustain += (turn > 15) ? 2 : 1;
+
     calc_energy();
 
     if (energy < minenergy) {
         int drain = (minenergy - energy) * 10;
+        money -= drain;
+    }
+
+    if (sustain < minsustain) {
+        int drain = (minsustain - sustain) * 10;
         money -= drain;
     }
 

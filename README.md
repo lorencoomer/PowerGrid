@@ -26,6 +26,7 @@ cmake --build .
 The objective of the game is to produce enough energy for your town while alse keeping your sustainability in check. You do this by suing unsustainable power plants, causing them to go out of buisness, and then building new and sustainable power plants that produce clean energy for the town of Smogville.
 
 - if you do not meet the energy requirements of Smogville, you will lose money at the end of each turn
+- you will also lose money if you dont are not sustainable enough
 - sue unsustainable power plants to get money and take them out
 - build more power plants to produce more energy
 - if you money dips below zero you are fired and lose the game!

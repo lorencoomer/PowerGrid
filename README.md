@@ -3,7 +3,7 @@
 ## Overview
 Powergrid is a terminal based strategy game in which you play as the district attourney of Smogville, and have a goal of replacing all unsustainable power with clean, new energy.
 
-## Installation
+## Building
 ### gcc
 ```
 git clone https://github.com/lorencoomer/PowerGrid

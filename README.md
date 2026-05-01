@@ -18,6 +18,7 @@ The objective of the game is to produce enough energy for your town while alse k
 - if you do not meet the energy requirements of Smogville, you will lose money at the end of each turn
 - sue unsustainable power plants to get money and take them out
 - build more power plants to produce more energy
+- if you money dips below zero you are fired and lose the game!
 
 ### Commands
 The ```sue``` command allows you to sue a power plant for breaking a law/act, and gain money out of it. Be careful! if you are wrong about the plant ot the law its breaking, you lose money.
